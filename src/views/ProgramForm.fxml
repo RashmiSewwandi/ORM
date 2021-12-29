@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="426.0" prefWidth="955.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProgramFormController">
+   <children>
+      <TableView layoutX="95.0" layoutY="27.0" prefHeight="373.0" prefWidth="745.0">
+        <columns>
+          <TableColumn prefWidth="187.0" text="Program ID" />
+          <TableColumn prefWidth="202.0" text="Program Name" />
+            <TableColumn prefWidth="187.0" text="Duration " />
+            <TableColumn prefWidth="176.0" text="Fee" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
