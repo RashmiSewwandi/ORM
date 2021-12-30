@@ -13,24 +13,17 @@ import java.io.IOException;
 public class AppInitializer extends Application {
 
     public static void main(String[] args) {
-        /*Student student = new Student();
-        student.setId("C002");
-        customer.setName("Rashmi");
-        customer.setAddress("Colombo");
-        customer.setSalary(50000);*/
 
-        Session session = FactoryConfiguration.getInstance().getSession();
+            launch(args);
+
+
+       /* Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        // session.update(customer);
-        // session.save(customer);
-        // session.delete(customer);
-       /* session.get(Customer.class, session.getSession());
-        System.out.println(customer.getAddress());*/
 
         transaction.commit();
 
-        session.close();
+        session.close();*/
 
 
 
@@ -38,7 +31,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("views/LoginForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/loginForm.fxml"));
         primaryStage.setTitle("Sipsewana Institute (v-1.0.0)");
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setScene(new Scene(root));

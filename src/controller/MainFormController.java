@@ -13,29 +13,20 @@ public class MainFormController {
     public AnchorPane mainFormContext;
     public AnchorPane PanelRoot;
 
-    public void btnRegistrationOnAction(ActionEvent actionEvent) throws IOException {
+
+    public void btnRegistration_On_Action(ActionEvent actionEvent) {
         try {
             AnchorPane pane;
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/RegistrationForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/StudentRegistrationForm.fxml"));
             pane = fxmlLoader.load();
             PanelRoot.getChildren().setAll(pane);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
-    public void StudentDetailsonAction(ActionEvent actionEvent) {
-        try {
-            AnchorPane pane;
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/StudentDetailsForm.fxml"));
-            pane = fxmlLoader.load();
-            PanelRoot.getChildren().setAll(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void programOnAction(ActionEvent actionEvent) {
+    public void program_On_Action(ActionEvent actionEvent) {
         try {
             AnchorPane pane;
             FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/ProgramForm.fxml"));
@@ -46,13 +37,22 @@ public class MainFormController {
         }
     }
 
-    public void logoutOnAction(ActionEvent actionEvent) throws IOException {
+    public void logout_On_Action(ActionEvent actionEvent) throws IOException {
         Parent load = FXMLLoader.load(getClass().getResource("../views/loginForm.fxml"));
         Scene scene = new Scene(load);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+    }
 
-
+    public void RegistrationDetails_On_Action(ActionEvent actionEvent) {
+        try {
+            AnchorPane pane;
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/RegistrationDetailsForm.fxml"));
+            pane = fxmlLoader.load();
+            PanelRoot.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

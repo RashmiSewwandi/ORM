@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="503.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentDetailsFormController">
+   <children>
+      <TableView layoutX="26.0" layoutY="97.0" prefHeight="379.0" prefWidth="928.0">
+        <columns>
+          <TableColumn prefWidth="105.0" text="Registration ID" />
+          <TableColumn prefWidth="205.0" text="Student Name" />
+            <TableColumn prefWidth="126.0" text="Program ID" />
+            <TableColumn prefWidth="203.0" text="Program Name" />
+            <TableColumn prefWidth="145.0" text="Duration" />
+            <TableColumn prefWidth="143.0" text="Join Date" />
+        </columns>
+      </TableView>
+      <JFXTextField labelFloat="true" layoutX="26.0" layoutY="24.0" prefHeight="47.0" prefWidth="395.0" promptText="Search Registration ID">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXTextField>
+   </children>
+</AnchorPane>
