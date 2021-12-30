@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="503.0" prefWidth="976.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentDetailsFormController">
    <children>
-      <TextField layoutX="122.0" layoutY="21.0" prefHeight="40.0" prefWidth="166.0" style="-fx-background-color: #f1f2f6;" text=" :   S0001">
+      <TextField fx:id="lblSid" layoutX="122.0" layoutY="21.0" prefHeight="40.0" prefWidth="166.0" style="-fx-background-color: #f1f2f6;" text=" :   S0001">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -20,24 +20,24 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="796.0" layoutY="21.0" prefHeight="34.0" prefWidth="159.0" text="    2021-12-15">
+      <Label fx:id="lblDate" layoutX="796.0" layoutY="21.0" prefHeight="34.0" prefWidth="159.0" text="    2021-12-15">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <Separator layoutX="796.0" layoutY="54.0" prefHeight="0.0" prefWidth="151.0" />
-      <Label layoutX="805.0" layoutY="57.0" prefHeight="34.0" prefWidth="150.0" text="     12:30:25">
+      <Label fx:id="lblTime" layoutX="805.0" layoutY="57.0" prefHeight="34.0" prefWidth="150.0" text="     12:30:25">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="19.0" layoutY="104.0" prefHeight="40.0" prefWidth="285.0" />
+      <TextField fx:id="studentName" layoutX="19.0" layoutY="104.0" prefHeight="40.0" prefWidth="285.0" />
       <Label layoutX="19.0" layoutY="79.0" prefHeight="25.0" prefWidth="118.0" text="Student Name">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="368.0" layoutY="104.0" prefHeight="40.0" prefWidth="174.0" promptText="dd/mm/yy">
+      <TextField fx:id="txtage" layoutX="368.0" layoutY="104.0" prefHeight="40.0" prefWidth="174.0" promptText="dd/mm/yy">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -51,20 +51,20 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ComboBox layoutX="607.0" layoutY="104.0" prefHeight="40.0" prefWidth="150.0" />
-      <TextField layoutX="22.0" layoutY="205.0" prefHeight="40.0" prefWidth="201.0" />
+      <ComboBox fx:id="gender" layoutX="607.0" layoutY="104.0" prefHeight="40.0" prefWidth="150.0" />
+      <TextField fx:id="txtcontactNumber" layoutX="22.0" layoutY="205.0" prefHeight="40.0" prefWidth="201.0" />
       <Label layoutX="23.0" layoutY="180.0" prefHeight="26.0" prefWidth="142.0" text="Contact Number">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="273.0" layoutY="205.0" prefHeight="40.0" prefWidth="285.0" />
+      <TextField fx:id="txtAddress" layoutX="273.0" layoutY="205.0" prefHeight="40.0" prefWidth="285.0" />
       <Label layoutX="272.0" layoutY="177.0" prefHeight="26.0" prefWidth="118.0" text="Address">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="613.0" layoutY="205.0" prefHeight="40.0" prefWidth="285.0" />
+      <TextField fx:id="txtEmail" layoutX="613.0" layoutY="205.0" prefHeight="40.0" prefWidth="285.0" />
       <Label layoutX="613.0" layoutY="178.0" prefHeight="26.0" prefWidth="118.0" text="E-Mail">
          <font>
             <Font size="17.0" />
@@ -76,10 +76,10 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ComboBox layoutX="19.0" layoutY="359.0" prefHeight="40.0" prefWidth="150.0" />
-      <TextField layoutX="214.0" layoutY="359.0" prefHeight="40.0" prefWidth="201.0" />
-      <TextField layoutX="457.0" layoutY="358.0" prefHeight="40.0" prefWidth="201.0" />
-      <TextField layoutX="696.0" layoutY="358.0" prefHeight="40.0" prefWidth="201.0" />
+      <ComboBox fx:id="cmbprogramIde" layoutX="19.0" layoutY="359.0" prefHeight="40.0" prefWidth="150.0" />
+      <TextField fx:id="txtprogramName" layoutX="214.0" layoutY="359.0" prefHeight="40.0" prefWidth="201.0" />
+      <TextField fx:id="txtDuration" layoutX="457.0" layoutY="358.0" prefHeight="40.0" prefWidth="201.0" />
+      <TextField fx:id="txtprogramFee" layoutX="696.0" layoutY="358.0" prefHeight="40.0" prefWidth="201.0" />
       <Label layoutX="213.0" layoutY="332.0" prefHeight="26.0" prefWidth="118.0" text="Program Name">
          <font>
             <Font size="17.0" />
@@ -95,12 +95,12 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <JFXButton layoutX="620.0" layoutY="438.0" prefHeight="34.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #34e7e4;" text="Add">
+      <JFXButton fx:id="btnAdd" layoutX="620.0" layoutY="438.0" onAction="#add_On_Action" prefHeight="34.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #34e7e4;" text="Add">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="786.0" layoutY="438.0" prefHeight="34.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #808e9b;" text="Clear">
+      <JFXButton fx:id="btnClear" layoutX="786.0" layoutY="438.0" onAction="#clear_On_Action" prefHeight="34.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #808e9b;" text="Clear">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

@@ -1,35 +1,35 @@
 package views.tm;
 
 public class ProgramTM {
-    private String pId;
-    private String pName;
+    private String programId;
+    private String programName;
     private String duration;
-    private String fee;
+    private double programFee;
 
     public ProgramTM() {
     }
 
-    public ProgramTM(String pId, String pName, String duration, String fee) {
-        this.setpId(pId);
-        this.setpName(pName);
+    public ProgramTM(String programId, String programName, String duration, double programFee) {
+        this.setProgramId(programId);
+        this.setProgramName(programName);
         this.setDuration(duration);
-        this.setFee(fee);
+        this.setProgramFee(programFee);
     }
 
-    public String getpId() {
-        return pId;
+    public String getProgramId() {
+        return programId;
     }
 
-    public void setpId(String pId) {
-        this.pId = pId;
+    public void setProgramId(String programId) {
+        this.programId = programId;
     }
 
-    public String getpName() {
-        return pName;
+    public String getProgramName() {
+        return programName;
     }
 
-    public void setpName(String pName) {
-        this.pName = pName;
+    public void setProgramName(String programName) {
+        this.programName = programName;
     }
 
     public String getDuration() {
@@ -40,21 +40,21 @@ public class ProgramTM {
         this.duration = duration;
     }
 
-    public String getFee() {
-        return fee;
+    public double getProgramFee() {
+        return programFee;
     }
 
-    public void setFee(String fee) {
-        this.fee = fee;
+    public void setProgramFee(double programFee) {
+        this.programFee = programFee;
     }
 
     @Override
     public String toString() {
         return "ProgramTM{" +
-                "pId='" + pId + '\'' +
-                ", pName='" + pName + '\'' +
+                "programId='" + programId + '\'' +
+                ", programName='" + programName + '\'' +
                 ", duration='" + duration + '\'' +
-                ", fee='" + fee + '\'' +
+                ", programFee=" + programFee +
                 '}';
     }
 }

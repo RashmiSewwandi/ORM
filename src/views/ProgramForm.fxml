@@ -11,19 +11,19 @@
 
 <AnchorPane prefHeight="503.0" prefWidth="976.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProgramFormController">
    <children>
-      <TableView layoutX="103.0" layoutY="252.0" prefHeight="239.0" prefWidth="751.0">
+      <TableView fx:id="tblprogram" layoutX="103.0" layoutY="252.0" prefHeight="239.0" prefWidth="751.0">
         <columns>
-          <TableColumn prefWidth="187.0" text="Program ID" />
-          <TableColumn prefWidth="202.0" text="Program Name" />
-            <TableColumn prefWidth="187.0" text="Duration " />
-            <TableColumn prefWidth="176.0" text="Fee" />
+          <TableColumn fx:id="colpId" prefWidth="187.0" text="Program ID" />
+          <TableColumn fx:id="colpName" prefWidth="202.0" text="Program Name" />
+            <TableColumn fx:id="colduration" prefWidth="187.0" text="Duration " />
+            <TableColumn fx:id="colfee" prefWidth="176.0" text="Fee" />
         </columns>
       </TableView>
       <AnchorPane layoutX="23.0" layoutY="23.0" prefHeight="152.0" prefWidth="936.0" style="-fx-background-color: #dfe4ea; -fx-background-radius: 30;">
          <children>
-            <TextField layoutX="20.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
-            <TextField layoutX="339.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
-            <TextField layoutX="650.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
+            <TextField fx:id="txtprogramName" layoutX="20.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
+            <TextField fx:id="txtduration" layoutX="339.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
+            <TextField fx:id="txtFee" layoutX="650.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
             <Label layoutX="20.0" layoutY="66.0" prefHeight="19.0" prefWidth="174.0" text="Program Name ">
                <font>
                   <Font size="17.0" />
@@ -41,7 +41,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField layoutX="169.0" layoutY="31.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #dfe4ea;" text=" :   P0001">
+      <TextField fx:id="lblpId" layoutX="169.0" layoutY="31.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #dfe4ea;" text=" :   P0001">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -52,17 +52,17 @@
          </font>
       </Label>
       <Separator layoutX="45.0" layoutY="213.0" prefHeight="5.0" prefWidth="507.0" />
-      <JFXButton layoutX="590.0" layoutY="199.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #55E6C1;" text="Add">
+      <JFXButton fx:id="btnAdd" layoutX="590.0" layoutY="199.0" onAction="#add_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #55E6C1;" text="Add">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="712.0" layoutY="199.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fed330;" text="Update">
+      <JFXButton fx:id="btnUpdate" layoutX="712.0" layoutY="199.0" onAction="#update_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fed330;" text="Update">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="833.0" layoutY="199.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fc5c65;" text="Delete" textAlignment="CENTER">
+      <JFXButton fx:id="btnDelete" layoutX="833.0" layoutY="199.0" onAction="#delete_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fc5c65;" text="Delete" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

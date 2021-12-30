@@ -2,8 +2,12 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,6 +35,9 @@
                <padding>
                   <Insets left="10.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton onAction="#RegistrationDetails_On_Action" prefHeight="63.0" prefWidth="247.0" style="-fx-background-color: #7ed6df;" text="  REGISTRATION DETAILS" textFill="#252020">
                <font>
@@ -49,6 +56,9 @@
                <padding>
                   <Insets left="10.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton onAction="#program_On_Action" prefHeight="57.0" prefWidth="252.0" style="-fx-background-color: #7ed6df;" text="  TRANNIG PROGRAMS" textFill="#1e1c1c">
                <font>
@@ -57,7 +67,7 @@
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/output-onlinepngtools.png" />
+                        <Image url="@assets/images%20(2).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -67,6 +77,9 @@
                <padding>
                   <Insets left="10.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton onAction="#logout_On_Action" prefHeight="54.0" prefWidth="175.0" style="-fx-background-color: #7ed6df;" text="   LOG OUT" textFill="#0a0909">
                <font>
@@ -85,6 +98,9 @@
                <padding>
                   <Insets left="10.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
          </children>
          <effect>
@@ -96,10 +112,20 @@
             <Image url="@assets/sipsewana.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="127.0" layoutY="2.0" prefHeight="99.0" prefWidth="805.0" style="-fx-background-color: white'; -fx-background-radius: 50;" text=" Institute of Higher Education">
+      <Label layoutX="127.0" layoutY="2.0" prefHeight="99.0" prefWidth="805.0" style="-fx-background-color: white'; -fx-background-radius: 50;" text=" Institute of Higher Education" textFill="#1a0e68">
          <font>
             <Font name="System Bold Italic" size="54.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="0.79" specularConstant="0.81" specularExponent="16.28" surfaceScale="1.62">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#fff7f7" />
+               </light>
+            </Lighting>
+         </effect>
       </Label>
       <AnchorPane fx:id="PanelRoot" layoutX="-1.0" layoutY="160.0" prefHeight="503.0" prefWidth="976.0" style="-fx-background-color: white;" styleClass="bodybg" stylesheets="@../image.css" />
    </children>
