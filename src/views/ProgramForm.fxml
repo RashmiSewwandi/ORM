@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="503.0" prefWidth="976.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProgramFormController">
    <children>
-      <TableView fx:id="tblprogram" layoutX="103.0" layoutY="252.0" prefHeight="239.0" prefWidth="751.0">
+      <TableView fx:id="tblprogram" layoutX="103.0" layoutY="252.0" onMouseClicked="#table_Click_OnAction" prefHeight="239.0" prefWidth="751.0">
         <columns>
           <TableColumn fx:id="colpId" prefWidth="187.0" text="Program ID" />
           <TableColumn fx:id="colpName" prefWidth="202.0" text="Program Name" />

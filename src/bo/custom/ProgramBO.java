@@ -6,11 +6,11 @@ import javafx.collections.ObservableList;
 
 import views.tm.ProgramTM;
 
-import java.util.ArrayList;
+
 
 public interface ProgramBO extends SuperBO {
 
-    boolean add(ProgramDTO programDTO);
+     boolean add(ProgramDTO programDTO);
 
      ObservableList<ProgramTM> find();
 
@@ -19,4 +19,7 @@ public interface ProgramBO extends SuperBO {
     boolean update(ProgramDTO programDTO);
 
     ObservableList<ProgramTM> search(String value);
+
+
+
 }

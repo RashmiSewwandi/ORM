@@ -1,25 +1,17 @@
-package entity;
+package views.tm;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class registration {
-    @Id
+public class RegistrationTM {
     private String studentId;
     private String studentName;
     private String programId;
     private String programName;
     private String duration;
-    @CreationTimestamp
     private String registrationDate;
 
-    public registration() {
+    public RegistrationTM() {
     }
 
-    public registration(String studentId, String studentName, String programId, String programName, String duration, String registrationDate) {
+    public RegistrationTM(String studentId, String studentName, String programId, String programName, String duration, String registrationDate) {
         this.setStudentId(studentId);
         this.setStudentName(studentName);
         this.setProgramId(programId);
@@ -78,7 +70,7 @@ public class registration {
 
     @Override
     public String toString() {
-        return "registration{" +
+        return "RegistrationTM{" +
                 "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
                 ", programId='" + programId + '\'' +

@@ -2,6 +2,7 @@
 package dao.custom.impl;
 
 import dao.custom.ProgramDAO;
+
 import entity.program;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -27,6 +28,8 @@ public class ProgramDAOImpl implements ProgramDAO {
         session.close();
         return list;
     }
+
+
 
     @Override
     public boolean add(program entity) {
@@ -77,4 +80,6 @@ public class ProgramDAOImpl implements ProgramDAO {
         session.close();
         return list;
     }
+
+
 }
