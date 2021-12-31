@@ -41,7 +41,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Label layoutX="368.0" layoutY="79.0" prefHeight="25.0" prefWidth="118.0" text="Age">
+      <Label layoutX="368.0" layoutY="79.0" prefHeight="25.0" prefWidth="118.0" text="Date of Birth">
          <font>
             <Font size="17.0" />
          </font>

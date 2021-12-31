@@ -17,7 +17,7 @@ public class DAOFactory {
     public SuperDAO getDAO(DAOTypes types){
         switch (types){
             case STUDENT:
-              //  return new StudentDAOImpl();
+                return new StudentDAOImpl();
             case PROGRAM:
                 return new ProgramDAOImpl();
             default:

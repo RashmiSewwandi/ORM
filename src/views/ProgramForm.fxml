@@ -41,12 +41,12 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="lblpId" layoutX="169.0" layoutY="31.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #dfe4ea;" text=" :   P0001">
+      <TextField fx:id="lblpId" layoutX="169.0" layoutY="31.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #dfe4ea;" text="    P0001">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </TextField>
-      <Label layoutX="29.0" layoutY="33.0" prefHeight="40.0" prefWidth="147.0" text="  Program ID">
+      <Label layoutX="29.0" layoutY="33.0" prefHeight="40.0" prefWidth="155.0" text="  Program ID :">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

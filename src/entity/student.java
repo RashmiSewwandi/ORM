@@ -2,12 +2,13 @@ package entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity (name="student")
-public class student {
+public class student implements SuperEntity {
     @Id
     private String studentId;
     private String studentName;
@@ -17,7 +18,8 @@ public class student {
     private String address;
     private String eMail;
 
- //   private List<program> programList = new ArrayList();
+    @ManyToMany
+    private List<program> programList = new ArrayList();
 
     public student() {
     }
