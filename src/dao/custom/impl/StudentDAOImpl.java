@@ -65,4 +65,24 @@ public class StudentDAOImpl implements StudentDAO {
         session.close();
         return list;
     }
+
+    @Override
+    public String getsId() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT studentId FROM student ORDER BY studentId DESC";
+
+        Query query = session.createQuery(hql);
+        query.setMaxResults(1);
+        String id = (String) query.uniqueResult();
+        transaction.commit();
+        session.close();
+        try {
+            int nextNumber = Integer.parseInt(id.replace("S-", "")) + 1;
+            return String.format("S-%03d", nextNumber);
+        } catch (NullPointerException exception) {
+            return "S-001";
+        }
+    }
 }

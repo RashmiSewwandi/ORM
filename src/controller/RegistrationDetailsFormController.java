@@ -21,7 +21,7 @@ public class RegistrationDetailsFormController {
     }
 
     private void showRegistrationOnTable() {
-     //   ObservableList<RegistrationTM> list = programBO.find();
+
 
         colsId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colstudentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
@@ -30,7 +30,7 @@ public class RegistrationDetailsFormController {
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("registrationDate"));
 
-       // tblRegistration.setItems(list);
+
     }
 
 }

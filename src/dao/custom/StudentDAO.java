@@ -6,4 +6,6 @@ import entity.student;
 
 public interface StudentDAO extends SuperDAO<student,String> {
 
+    String getsId()throws Exception;
+
 }

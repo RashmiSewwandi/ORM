@@ -1,7 +1,7 @@
 package bo;
 
 import bo.custom.impl.ProgramBOImpl;
-import bo.custom.impl.StudentBOImpl;
+import bo.custom.impl.StudentDetailsBOImpl;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -18,7 +18,7 @@ public class BOFactory {
     public SuperBO getBo(BOTypes boTypes){
         switch (boTypes){
             case STUDENT:
-                return new StudentBOImpl();
+                return new StudentDetailsBOImpl();
             case PROGRAM:
                 return new ProgramBOImpl();
 

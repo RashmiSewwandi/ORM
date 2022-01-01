@@ -75,6 +75,10 @@ public class ProgramBOImpl implements ProgramBO {
         return dtoArrayList;
     }
 
+    public program getProgram(String id){
+        return programDAO.get(id);
+    }
+
 
 
 }

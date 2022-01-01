@@ -3,17 +3,33 @@ package dao.custom.impl;
 
 import dao.custom.ProgramDAO;
 
+import dto.ProgramDTO;
 import entity.program;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ProgramDAOImpl implements ProgramDAO {
 
+
+
+    public ArrayList<String> getProgramId() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT programId FROM program ";
+        Query query = session.createQuery(hql);
+        ArrayList<String> names = (ArrayList<String>) query.list();
+
+        transaction.commit();
+        session.close();
+        return names;
+    }
 
     @Override
     public List<program> searchPrograms(String value) {
@@ -29,9 +45,7 @@ public class ProgramDAOImpl implements ProgramDAO {
         return list;
     }
 
-
-
-    @Override
+      @Override
     public boolean add(program entity) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
@@ -81,5 +95,13 @@ public class ProgramDAOImpl implements ProgramDAO {
         return list;
     }
 
+    public program get(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction t5 = session.beginTransaction();
+        program s1 = session.get(program.class, id);
+        t5.commit();
+        session.close();
+        return s1;
+    }
 
 }
