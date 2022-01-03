@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import views.tm.ProgramTM;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProgramBOImpl implements ProgramBO {
@@ -58,6 +59,11 @@ public class ProgramBOImpl implements ProgramBO {
                 programDTO.getDuration(),
                 programDTO.getProgramFee()
         ));
+    }
+
+    @Override
+    public ArrayList<String> getAllProgramIde() throws Exception {
+        return programDAO.getProgramId();
     }
 
 

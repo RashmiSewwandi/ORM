@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 
 import views.tm.ProgramTM;
 
+import java.util.ArrayList;
 
 
 public interface ProgramBO extends SuperBO {
@@ -19,7 +20,5 @@ public interface ProgramBO extends SuperBO {
     boolean update(ProgramDTO programDTO);
 
 
-
-
-
+    ArrayList<String> getAllProgramIde()throws Exception;
 }

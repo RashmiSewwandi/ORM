@@ -60,7 +60,7 @@ public class StudentDetailsBOImpl implements StudentDetailsBO {
         return studentDAO.getsId();
     }
 
-    @Override
+
     public ArrayList<String> getAllProgramIde() throws Exception {
         return programDAO.getProgramId();
 
@@ -89,5 +89,18 @@ public class StudentDetailsBOImpl implements StudentDetailsBO {
         return dtoArrayList;
     }
 
+    @Override
+    public ArrayList<String> getAllStudentIde() throws Exception {
+        return null;
+    }
 
+    /*@Override
+    public ArrayList<String> getAllStudentIde() throws Exception {
+        return studentDAO.getsId();
+    }*/
+
+
+    public Student getStudent(String id) {
+        return studentDAO.get(id);
+    }
 }

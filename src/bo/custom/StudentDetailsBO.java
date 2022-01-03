@@ -19,15 +19,12 @@ public interface StudentDetailsBO extends SuperBO {
 
     String getsId() throws Exception;
 
-    ArrayList<String> getAllProgramIde()throws Exception;
+  /*  ArrayList<String> getAllProgramIde()throws Exception;*/
 
 
 
     ObservableList<StudentTM> find();
 
 
-
-
-
-
+    ArrayList<String> getAllStudentIde()throws Exception;
 }

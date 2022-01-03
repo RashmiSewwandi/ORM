@@ -3,6 +3,7 @@ package dao.custom.impl;
 
 import dao.custom.StudentDAO;
 import entity.Student;
+import entity.program;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -82,5 +83,14 @@ public class StudentDAOImpl implements StudentDAO {
         } catch (NullPointerException exception) {
             return "S-001";
         }
+    }
+
+    public Student get(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction t5 = session.beginTransaction();
+        Student s1 = session.get(Student.class, id);
+        t5.commit();
+        session.close();
+        return s1;
     }
 }

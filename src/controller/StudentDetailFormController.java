@@ -83,7 +83,7 @@ public class StudentDetailFormController {
 
     }
 
- /*   private void setProgramData(String newValue) throws SQLException, ClassNotFoundException {
+   /* private void setProgramData(String newValue) throws SQLException, ClassNotFoundException {
         try {
             program temProgram = programBO.getProgram(newValue);
             txtprogramName.setText(temProgram.getProgramName());
