@@ -35,7 +35,7 @@
          </font>
       </Label>
       <TextField fx:id="txtAddress" layoutX="739.0" layoutY="49.0" prefHeight="26.0" prefWidth="223.0" />
-      <Label layoutX="739.0" layoutY="23.0" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #dff9fb;" text="Address">
+      <Label layoutX="738.0" layoutY="23.0" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #dff9fb;" text="Address">
          <font>
             <Font size="17.0" />
          </font>
@@ -46,9 +46,9 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="txtprogramName" layoutX="215.0" layoutY="111.0" prefHeight="25.0" prefWidth="285.0" />
+      <TextField fx:id="txtprogramName" layoutX="210.0" layoutY="111.0" prefHeight="25.0" prefWidth="285.0" />
       <TextField fx:id="txtduration" layoutX="517.0" layoutY="110.0" prefHeight="26.0" prefWidth="201.0" />
-      <TextField fx:id="txtFee" layoutX="745.0" layoutY="110.0" prefHeight="26.0" prefWidth="216.0" />
+      <TextField fx:id="txtFee" layoutX="738.0" layoutY="110.0" prefHeight="26.0" prefWidth="223.0" />
       <Label layoutX="215.0" layoutY="81.0" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #dff9fb;" text="Program Name ">
          <font>
             <Font size="17.0" />
@@ -59,7 +59,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="745.0" layoutY="81.0" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #dff9fb;" text="Program Fee">
+      <Label layoutX="738.0" layoutY="81.0" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #dff9fb;" text="Program Fee">
          <font>
             <Font size="17.0" />
          </font>

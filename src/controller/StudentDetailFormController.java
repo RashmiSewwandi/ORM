@@ -1,31 +1,27 @@
 package controller;
 
 import bo.BOFactory;
+import bo.custom.ProgramBO;
+import bo.custom.StudentDetailsBO;
 import bo.custom.impl.ProgramBOImpl;
 import bo.custom.impl.StudentDetailsBOImpl;
 import com.jfoenix.controls.JFXButton;
-import dao.custom.impl.ProgramDAOImpl;
-import dto.ProgramDTO;
 import dto.StudentDTO;
-import entity.Student;
-import entity.program;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import views.tm.ProgramTM;
 import views.tm.StudentTM;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.ArrayList;
+
 import java.util.Date;
 
 public class StudentDetailFormController {
@@ -33,7 +29,6 @@ public class StudentDetailFormController {
     public Label lblTime;
     public TextField studentName;
     public TextField txtage;
-    public ComboBox <String>cmbprogramId;
 
     public TextField txtcontactNumber;
     public TextField txtAddress;
@@ -45,59 +40,27 @@ public class StudentDetailFormController {
     public TableView<StudentTM> tblStudent;
     public TableColumn colsId;
     public TableColumn colgender;
-    public TableColumn colContavtNumber;
     public TableColumn colAddress;
     public JFXButton btnDelete;
     public TableColumn colName;
     public TableColumn colDOB;
     public ComboBox <String> cmbgender;
     public TableColumn colemail;
+    public TableColumn colContactNumber;
 
 
-    StudentDetailsBOImpl studentDetailsBO = (StudentDetailsBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENT);
-    ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.PROGRAM);
+    StudentDetailsBO studentDetailsBO = (StudentDetailsBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENT);
+    ProgramBO programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.PROGRAM);
 
 
 
     public void initialize() throws SQLException {
-       /* try {
-            initializeCmbBox();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
         genarateNewId();
         loadDateAndTime();
         gender();
         showStudentOnTable();
 
-     /*   cmbprogramId.getSelectionModel().selectedItemProperty().
-                addListener((observable, oldValue, newValue) -> {
-                    try {
-                        setProgramData(newValue);
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                });*/
-
     }
-
-   /* private void setProgramData(String newValue) throws SQLException, ClassNotFoundException {
-        try {
-            program temProgram = programBO.getProgram(newValue);
-            txtprogramName.setText(temProgram.getProgramName());
-            txtDuration.setText(temProgram.getDuration());
-            txtprogramFee.setText(String.valueOf(temProgram.getProgramFee()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
-  /*  private void initializeCmbBox() throws Exception {
-        ArrayList<String> allProgramName = studentDetailsBO.getAllProgramIde();
-        cmbprogramId.setItems(FXCollections.observableArrayList(allProgramName));
-    }*/
 
     private void loadDateAndTime() {
 
@@ -129,7 +92,7 @@ public class StudentDetailFormController {
 
         );
         if (studentDetailsBO.add(studentDTO)){
-            new Alert(Alert.AlertType.CONFIRMATION,"Programme Added").show();
+            new Alert(Alert.AlertType.CONFIRMATION," Added").show();
             showStudentOnTable();
             genarateNewId();
         }else {
@@ -189,9 +152,9 @@ public class StudentDetailFormController {
         colName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         colDOB.setCellValueFactory(new PropertyValueFactory<>("age"));
         colgender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        colContavtNumber.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+        colContactNumber.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colemail.setCellValueFactory(new PropertyValueFactory<>("eMail"));
+        colemail.setCellValueFactory(new PropertyValueFactory<>("mail"));
 
         tblStudent.setItems(list);
     }
@@ -216,7 +179,7 @@ public class StudentDetailFormController {
         txtage.setText(student.getAge());
         txtcontactNumber.setText(student.getContactNumber());
         txtAddress.setText(student.getAddress());
-        txtEmail.setText(student.geteMail());
+        txtEmail.setText(student.getMail());
 
     }
 }

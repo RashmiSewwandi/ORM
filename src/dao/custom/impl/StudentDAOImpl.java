@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -92,5 +93,20 @@ public class StudentDAOImpl implements StudentDAO {
         t5.commit();
         session.close();
         return s1;
+    }
+
+
+    @Override
+    public ArrayList<String> getStudentId() throws Exception{
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT studentId FROM Student ";
+        Query query = session.createQuery(hql);
+        ArrayList<String> names = (ArrayList<String>) query.list();
+
+        transaction.commit();
+        session.close();
+        return names;
     }
 }

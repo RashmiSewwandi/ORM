@@ -2,6 +2,7 @@ package bo.custom;
 
 import bo.SuperBO;
 import dto.ProgramDTO;
+import entity.program;
 import javafx.collections.ObservableList;
 
 import views.tm.ProgramTM;
@@ -19,6 +20,7 @@ public interface ProgramBO extends SuperBO {
 
     boolean update(ProgramDTO programDTO);
 
-
     ArrayList<String> getAllProgramIde()throws Exception;
+
+    program getProgram(String id);
 }

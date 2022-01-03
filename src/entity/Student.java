@@ -1,8 +1,6 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +16,8 @@ public class Student implements SuperEntity {
     private String eMail;
 
 
-    @ManyToMany
-    private List<program> programList = new ArrayList();
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<registration_detail> registration_details ;
 
     public Student() {
     }

@@ -1,6 +1,8 @@
 package controller;
 
 import bo.BOFactory;
+import bo.custom.ProgramBO;
+import bo.custom.StudentDetailsBO;
 import bo.custom.impl.ProgramBOImpl;
 import bo.custom.impl.StudentDetailsBOImpl;
 import com.jfoenix.controls.JFXButton;
@@ -14,7 +16,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import views.tm.RegistrationTM;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class RegistrationFormController {
     public TableView <RegistrationTM>tblRegistration;
@@ -24,26 +29,34 @@ public class RegistrationFormController {
     public TableColumn colprogramName;
     public TableColumn colDuration;
     public TableColumn colDate;
+
     public TextField txtstudentName;
     public TextField txtcontactNumber;
     public TextField txtAddress;
     public ComboBox<String> cmbsId;
+    public ComboBox <String>cmbpId;
     public TextField txtprogramName;
     public TextField txtduration;
     public TextField txtFee;
-    public ComboBox <String>cmbpId;
     public JFXButton btnAdd;
     public JFXButton btnDelete;
     public Label lblDate;
 
-    StudentDetailsBOImpl studentDetailsBO = (StudentDetailsBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENT);
-    ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.PROGRAM);
+
+    StudentDetailsBO studentDetailsBO = (StudentDetailsBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENT);
+    ProgramBO programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.PROGRAM);
 
 
     public void initialize() {
+
+
+
+
         showRegistrationOnTable();
+        loadDate();
         try {
-            initializeCmbBox();
+            ProgramId();
+            StudentId();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,9 +72,20 @@ public class RegistrationFormController {
                         e.printStackTrace();
                     }
                 });
+
+                cmbsId.getSelectionModel().selectedItemProperty().
+                addListener((observable, oldValue, newValue) -> {
+                    try {
+                        setStudentData(newValue);
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 
-    private void setStudentData(String newValue) {
+    private void setStudentData(String newValue) throws SQLException, ClassNotFoundException {
         try {
             Student temStudent = studentDetailsBO.getStudent(newValue);
             txtstudentName.setText(temStudent.getStudentName());
@@ -84,16 +108,20 @@ public class RegistrationFormController {
         }
     }
 
-    private void initializeCmbBox() throws Exception {
+    private void ProgramId() throws Exception {
         ArrayList<String> allProgramName = programBO.getAllProgramIde();
         cmbpId.setItems(FXCollections.observableArrayList(allProgramName));
 
+    }
+    private void StudentId() throws Exception {
         ArrayList<String> allStudentName = studentDetailsBO.getAllStudentIde();
-        cmbpId.setItems(FXCollections.observableArrayList(allProgramName));
+        System.out.println(allStudentName.get(0));
+        cmbsId.setItems(FXCollections.observableArrayList(allStudentName));
     }
 
-
     private void showRegistrationOnTable() {
+
+
         colsId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colstudentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         colprogramId.setCellValueFactory(new PropertyValueFactory<>("programId"));
@@ -108,5 +136,14 @@ public class RegistrationFormController {
     }
 
     public void delete_On_Action(ActionEvent actionEvent) {
+    }
+
+
+    private void loadDate() {
+
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(f.format(date));
+
     }
 }

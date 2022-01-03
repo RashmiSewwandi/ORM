@@ -31,7 +31,7 @@ public class ProgramBOImpl implements ProgramBO {
         List<program>list=programDAO.find();
         ObservableList<ProgramTM> dtoArrayList = FXCollections.observableArrayList();
 
-        ProgramDTO programDTO=null;
+
 
         for (program program : list
         ){dtoArrayList.add(new ProgramTM(
@@ -81,6 +81,7 @@ public class ProgramBOImpl implements ProgramBO {
         return dtoArrayList;
     }
 
+    @Override
     public program getProgram(String id){
         return programDAO.get(id);
     }

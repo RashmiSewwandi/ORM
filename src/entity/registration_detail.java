@@ -4,53 +4,71 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.util.Date;
 
 @Entity
 public class registration_detail implements SuperEntity{
     @Id
-    private String studentId;
-    private String programId;
+    private String id;
+    @ManyToOne
+    @JoinColumn(name = "student",referencedColumnName = "studentId")
+    private Student student;
+    @ManyToOne
+    @JoinColumn(name = "program",referencedColumnName = "programId")
+    private program program;
     @CreationTimestamp
-    private String registrationDate;
+    private Date registrationDate;
 
     public registration_detail() {
     }
 
-    public registration_detail(String studentId, String programId, String registrationDate) {
-        this.setStudentId(studentId);
-        this.setProgramId(programId);
+    public registration_detail(String id, Student student, entity.program program, Date registrationDate) {
+        this.setId(id);
+        this.setStudent(student);
+        this.setProgram(program);
         this.setRegistrationDate(registrationDate);
     }
 
-    public String getStudentId() {
-        return studentId;
+    public String getId() {
+        return id;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getProgramId() {
-        return programId;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setProgramId(String programId) {
-        this.programId = programId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public String getRegistrationDate() {
+    public entity.program getProgram() {
+        return program;
+    }
+
+    public void setProgram(entity.program program) {
+        this.program = program;
+    }
+
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(String registrationDate) {
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 
     @Override
     public String toString() {
         return "registration_detail{" +
-                "studentId='" + studentId + '\'' +
-                ", programId='" + programId + '\'' +
+                "id='" + id + '\'' +
+                ", student=" + student +
+                ", program=" + program +
                 ", registrationDate='" + registrationDate + '\'' +
                 '}';
     }

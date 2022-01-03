@@ -23,7 +23,7 @@ public class LoginFormController {
     public AnchorPane Root;
 
     public void Login_On_Action(ActionEvent actionEvent) throws IOException {
-        if (txtUserName.getText().equals("") & txtPassword.getText().equals("")){
+        if (txtUserName.getText().equals("rashu") & txtPassword.getText().equals("12345")){
             URL resource = getClass().getResource("../views/mainForm.fxml");
             Parent load = FXMLLoader.load(resource);
             Stage window = (Stage) LoginFormContext.getScene().getWindow();

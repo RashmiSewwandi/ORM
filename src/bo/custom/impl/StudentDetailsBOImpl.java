@@ -5,6 +5,7 @@ import dao.DAOFactory;
 import dao.custom.ProgramDAO;
 import dao.custom.impl.ProgramDAOImpl;
 import dao.custom.impl.StudentDAOImpl;
+import dto.ProgramDTO;
 import dto.StudentDTO;
 import entity.Student;
 import javafx.collections.FXCollections;
@@ -19,7 +20,6 @@ public class StudentDetailsBOImpl implements StudentDetailsBO {
 
     StudentDAOImpl studentDAO=(StudentDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
 
-    ProgramDAO programDAO = new ProgramDAOImpl();
 
     @Override
     public boolean add(StudentDTO studentDTO) {
@@ -38,7 +38,6 @@ public class StudentDetailsBOImpl implements StudentDetailsBO {
 
     @Override
     public boolean delete(String id) {
-
         return studentDAO.delete(id);
     }
 
@@ -61,17 +60,11 @@ public class StudentDetailsBOImpl implements StudentDetailsBO {
     }
 
 
-    public ArrayList<String> getAllProgramIde() throws Exception {
-        return programDAO.getProgramId();
-
-    }
-
     @Override
     public ObservableList<StudentTM> find() {
         List<Student>list=studentDAO.find();
         ObservableList<StudentTM> dtoArrayList = FXCollections.observableArrayList();
 
-      //  StudentDTO studentDTO=null;
 
         for (Student student : list
         ){dtoArrayList.add(new StudentTM(
@@ -85,22 +78,23 @@ public class StudentDetailsBOImpl implements StudentDetailsBO {
 
         ));
 
+
         }
         return dtoArrayList;
     }
 
     @Override
     public ArrayList<String> getAllStudentIde() throws Exception {
-        return null;
+        return studentDAO.getStudentId();
     }
 
-    /*@Override
-    public ArrayList<String> getAllStudentIde() throws Exception {
-        return studentDAO.getsId();
-    }*/
 
-
+    @Override
     public Student getStudent(String id) {
+
         return studentDAO.get(id);
     }
+
+
+
 }

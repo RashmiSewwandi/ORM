@@ -89,7 +89,7 @@
           <TableColumn fx:id="colName" minWidth="5.0" prefWidth="181.0" text="Student Name" />
             <TableColumn fx:id="colDOB" minWidth="5.0" prefWidth="112.0" text="DOB" />
             <TableColumn fx:id="colgender" minWidth="5.0" prefWidth="96.0" text="Gender" />
-            <TableColumn fx:id="colContavtNumber" minWidth="5.0" prefWidth="138.0" text="Contact Number" />
+            <TableColumn fx:id="colContactNumber" minWidth="5.0" prefWidth="138.0" text="Contact Number" />
             <TableColumn fx:id="colAddress" minWidth="5.0" prefWidth="157.0" text="Address" />
             <TableColumn fx:id="colemail" prefWidth="174.0" text="E-Mail" />
         </columns>

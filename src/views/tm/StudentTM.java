@@ -7,7 +7,7 @@ public class StudentTM {
     private String gender;
     private String contactNumber;
     private String address;
-    private String eMail;
+    private String mail;
 
     public StudentTM() {
     }
@@ -19,7 +19,7 @@ public class StudentTM {
         this.setGender(gender);
         this.setContactNumber(contactNumber);
         this.setAddress(address);
-        this.seteMail(eMail);
+        this.setMail(eMail);
     }
 
     public String getStudentId() {
@@ -70,12 +70,12 @@ public class StudentTM {
         this.address = address;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getMail() {
+        return mail;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class StudentTM {
                 ", gender='" + gender + '\'' +
                 ", contactNumber='" + contactNumber + '\'' +
                 ", address='" + address + '\'' +
-                ", eMail='" + eMail + '\'' +
+                ", eMail='" + mail + '\'' +
                 '}';
     }
 }

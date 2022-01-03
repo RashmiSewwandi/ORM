@@ -1,8 +1,6 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +13,8 @@ public class program implements SuperEntity {
     private String duration;
     private double programFee;
 
-    @ManyToMany(mappedBy = "programList")
-    private List<Student> studentList = new ArrayList();
+    @OneToMany(mappedBy = "program",cascade = CascadeType.ALL)
+    private List<registration_detail> registration_details;
 
     public program() {
     }
