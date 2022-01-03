@@ -2,14 +2,12 @@
 package dao.custom.impl;
 
 import dao.custom.StudentDAO;
-import entity.student;
+import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -17,7 +15,7 @@ public class StudentDAOImpl implements StudentDAO {
 
 
     @Override
-    public boolean add(student entity) {
+    public boolean add(Student entity) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -29,7 +27,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public boolean update(student entity) {
+    public boolean update(Student entity) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -45,7 +43,7 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        student student = session.get(student.class, s);
+        Student student = session.get(Student.class, s);
         session.delete(student);
 
         transaction.commit();
@@ -54,12 +52,12 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<student> find() {
+    public List<Student> find() {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Query query = session.createQuery("from student ");
-        List <student>list = query.list();
+        Query query = session.createQuery("from Student ");
+        List <Student>list = query.list();
 
         transaction.commit();
         session.close();
@@ -71,7 +69,7 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        String hql = "SELECT studentId FROM student ORDER BY studentId DESC";
+        String hql = "SELECT studentId FROM Student ORDER BY studentId DESC";
 
         Query query = session.createQuery(hql);
         query.setMaxResults(1);

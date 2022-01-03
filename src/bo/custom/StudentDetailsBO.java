@@ -1,15 +1,17 @@
 package bo.custom;
 
 import bo.SuperBO;
+import dto.ProgramDTO;
 import dto.StudentDTO;
+import javafx.collections.ObservableList;
+import views.tm.ProgramTM;
+import views.tm.StudentTM;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public interface StudentDetailsBO extends SuperBO {
     boolean add(StudentDTO studentDTO);
-
-    List<StudentDTO>find();
 
     boolean delete(String id);
 
@@ -19,5 +21,13 @@ public interface StudentDetailsBO extends SuperBO {
 
     ArrayList<String> getAllProgramIde()throws Exception;
 
-    // ArrayList<String> getAllProgramIde()throws Exception;
+
+
+    ObservableList<StudentTM> find();
+
+
+
+
+
+
 }

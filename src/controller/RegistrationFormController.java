@@ -4,10 +4,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import views.tm.ProgramTM;
 import views.tm.RegistrationTM;
 
-public class RegistrationDetailsFormController {
+public class RegistrationFormController {
     public TableView <RegistrationTM>tblRegistration;
     public TableColumn colsId;
     public TableColumn colstudentName;
@@ -16,11 +15,15 @@ public class RegistrationDetailsFormController {
     public TableColumn colDuration;
     public TableColumn colDate;
 
+
+
     public void initialize(){
+
         showRegistrationOnTable();
     }
 
     private void showRegistrationOnTable() {
+
 
 
         colsId.setCellValueFactory(new PropertyValueFactory<>("studentId"));

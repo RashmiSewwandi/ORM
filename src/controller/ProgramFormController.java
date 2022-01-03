@@ -6,10 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import dto.ProgramDTO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import views.tm.ProgramTM;
@@ -20,7 +17,7 @@ public class ProgramFormController {
     public TextField txtduration;
 
     public TextField txtFee;
-    public TextField lblpId;
+
     public JFXButton btnAdd;
     public JFXButton btnUpdate;
     public JFXButton btnDelete;
@@ -29,16 +26,17 @@ public class ProgramFormController {
     public TableColumn colpName;
     public TableColumn colduration;
     public TableColumn colfee;
+    public Label lblpId;
 
     ProgramBOImpl programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.PROGRAM);
 
     public void initialize(){
+        genarateNewpId();
         showProgramsOnTable();
     }
 
     private void showProgramsOnTable() {
         ObservableList<ProgramTM> list = programBO.find();
-
         colpId.setCellValueFactory(new PropertyValueFactory<>("programId"));
         colpName.setCellValueFactory(new PropertyValueFactory<>("programName"));
         colduration.setCellValueFactory(new PropertyValueFactory<>("duration"));
@@ -47,9 +45,17 @@ public class ProgramFormController {
         tblprogram.setItems(list);
     }
 
+    private void genarateNewpId() {
+        try {
+            lblpId.setText(programBO.getpId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void clearField() {
-        lblpId.clear();
+
         txtprogramName.clear();
         txtduration.clear();
         txtFee.clear();
@@ -66,6 +72,7 @@ public class ProgramFormController {
         );
         if (programBO.add(programDTO)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Saved .....").show();
+            genarateNewpId();
             showProgramsOnTable();
             clearField();
         } else {

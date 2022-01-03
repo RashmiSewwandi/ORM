@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="503.0" prefWidth="976.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProgramFormController">
+<AnchorPane prefHeight="535.0" prefWidth="976.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProgramFormController">
    <children>
-      <TableView fx:id="tblprogram" layoutX="103.0" layoutY="252.0" onMouseClicked="#table_Click_OnAction" prefHeight="239.0" prefWidth="751.0">
+      <TableView fx:id="tblprogram" layoutX="50.0" layoutY="268.0" onMouseClicked="#table_Click_OnAction" prefHeight="247.0" prefWidth="751.0">
         <columns>
           <TableColumn fx:id="colpId" prefWidth="187.0" text="Program ID" />
           <TableColumn fx:id="colpName" prefWidth="202.0" text="Program Name" />
@@ -19,7 +19,7 @@
             <TableColumn fx:id="colfee" prefWidth="176.0" text="Fee" />
         </columns>
       </TableView>
-      <AnchorPane layoutX="23.0" layoutY="23.0" prefHeight="152.0" prefWidth="936.0" style="-fx-background-color: #dfe4ea; -fx-background-radius: 30;">
+      <AnchorPane layoutX="23.0" layoutY="23.0" prefHeight="166.0" prefWidth="936.0" style="-fx-background-color: #dfe4ea; -fx-background-radius: 30;">
          <children>
             <TextField fx:id="txtprogramName" layoutX="20.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
             <TextField fx:id="txtduration" layoutX="339.0" layoutY="89.0" prefHeight="40.0" prefWidth="224.0" />
@@ -39,30 +39,30 @@
                   <Font size="17.0" />
                </font>
             </Label>
+            <Label fx:id="lblpId" layoutX="171.0" layoutY="14.0" prefHeight="40.0" prefWidth="111.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="lblpId" layoutX="169.0" layoutY="31.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #dfe4ea;" text="    P0001">
+      <Label layoutX="29.0" layoutY="33.0" prefHeight="40.0" prefWidth="164.0" text="  Program ID :">
          <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </TextField>
-      <Label layoutX="29.0" layoutY="33.0" prefHeight="40.0" prefWidth="155.0" text="  Program ID :">
-         <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Separator layoutX="45.0" layoutY="213.0" prefHeight="5.0" prefWidth="507.0" />
-      <JFXButton fx:id="btnAdd" layoutX="590.0" layoutY="199.0" onAction="#add_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #55E6C1;" text="Add">
+      <Separator layoutX="47.0" layoutY="231.0" prefHeight="5.0" prefWidth="507.0" />
+      <JFXButton fx:id="btnAdd" layoutX="583.0" layoutY="218.0" onAction="#add_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #55E6C1;" text="Add">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnUpdate" layoutX="712.0" layoutY="199.0" onAction="#update_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fed330;" text="Update">
+      <JFXButton fx:id="btnUpdate" layoutX="707.0" layoutY="218.0" onAction="#update_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fed330;" text="Update">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" layoutX="833.0" layoutY="199.0" onAction="#delete_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fc5c65;" text="Delete" textAlignment="CENTER">
+      <JFXButton fx:id="btnDelete" layoutX="831.0" layoutY="218.0" onAction="#delete_On_Action" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #fc5c65;" text="Delete" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

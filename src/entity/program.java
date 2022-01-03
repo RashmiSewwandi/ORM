@@ -16,7 +16,7 @@ public class program implements SuperEntity {
     private double programFee;
 
     @ManyToMany(mappedBy = "programList")
-    private List<student> studentList = new ArrayList();
+    private List<Student> studentList = new ArrayList();
 
     public program() {
     }

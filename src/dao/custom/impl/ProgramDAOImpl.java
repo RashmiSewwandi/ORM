@@ -104,4 +104,23 @@ public class ProgramDAOImpl implements ProgramDAO {
         return s1;
     }
 
+    public String getpId() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT programId FROM program ORDER BY programId DESC";
+
+        Query query = session.createQuery(hql);
+        query.setMaxResults(1);
+        String id = (String) query.uniqueResult();
+        transaction.commit();
+        session.close();
+        try {
+            int nextNumber = Integer.parseInt(id.replace("P-", "")) + 1;
+            return String.format("P-%03d", nextNumber);
+        } catch (NullPointerException exception) {
+            return "P-001";
+        }
+    }
+
 }

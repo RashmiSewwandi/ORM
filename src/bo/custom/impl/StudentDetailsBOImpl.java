@@ -1,11 +1,15 @@
 package bo.custom.impl;
 
 import bo.custom.StudentDetailsBO;
+import dao.DAOFactory;
 import dao.custom.ProgramDAO;
-import dao.custom.StudentDAO;
 import dao.custom.impl.ProgramDAOImpl;
 import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
+import entity.Student;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import views.tm.StudentTM;
 
 
 import java.util.ArrayList;
@@ -13,27 +17,42 @@ import java.util.List;
 
 public class StudentDetailsBOImpl implements StudentDetailsBO {
 
-    StudentDAO studentDAO = new StudentDAOImpl();
+    StudentDAOImpl studentDAO=(StudentDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+
     ProgramDAO programDAO = new ProgramDAOImpl();
 
     @Override
     public boolean add(StudentDTO studentDTO) {
-        return false;
+        return studentDAO.add(new Student(
+                studentDTO.getStudentId(),
+                studentDTO.getStudentName(),
+                studentDTO.getAge(),
+                studentDTO.getGender(),
+                studentDTO.getContactNumber(),
+                studentDTO.getAddress(),
+                studentDTO.geteMail()
+        ));
     }
 
-    @Override
-    public List<StudentDTO> find() {
-        return null;
-    }
+
 
     @Override
     public boolean delete(String id) {
-        return false;
+
+        return studentDAO.delete(id);
     }
 
     @Override
     public boolean update(StudentDTO studentDTO) {
-        return false;
+        return studentDAO.update(new Student(
+                studentDTO.getStudentId(),
+                studentDTO.getStudentName(),
+                studentDTO.getAge(),
+                studentDTO.getGender(),
+                studentDTO.getContactNumber(),
+                studentDTO.getAddress(),
+                studentDTO.geteMail()
+        ));
     }
 
     @Override
@@ -47,15 +66,28 @@ public class StudentDetailsBOImpl implements StudentDetailsBO {
 
     }
 
+    @Override
+    public ObservableList<StudentTM> find() {
+        List<Student>list=studentDAO.find();
+        ObservableList<StudentTM> dtoArrayList = FXCollections.observableArrayList();
 
-   /* @Override
-    public ArrayList<String> getAllProgramIde() throws Exception {
-        return ProgramDAO programDAO = new ProgramDAOImpl();
-    }*/
+      //  StudentDTO studentDTO=null;
+
+        for (Student student : list
+        ){dtoArrayList.add(new StudentTM(
+                student.getStudentId(),
+                student.getStudentName(),
+                student.getAge(),
+                student.getGender(),
+                student.getContactNumber(),
+                student.getAddress(),
+                student.geteMail()
+
+        ));
+
+        }
+        return dtoArrayList;
+    }
 
 
-   /* @Override
-    public ArrayList<String> getAllProgramsName() throws Exception {
-       return ProgramDAO programDAO = new ProgramDAOImpl();
-    }*/
 }

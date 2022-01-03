@@ -7,14 +7,20 @@ import com.jfoenix.controls.JFXButton;
 import dao.custom.impl.ProgramDAOImpl;
 import dto.ProgramDTO;
 import dto.StudentDTO;
+import entity.Student;
 import entity.program;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import views.tm.ProgramTM;
+import views.tm.StudentTM;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -22,25 +28,30 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class StudentDetailsFormController {
+public class StudentDetailFormController {
     public Label lblDate;
     public Label lblTime;
     public TextField studentName;
     public TextField txtage;
-    public ComboBox <String>gender;
     public ComboBox <String>cmbprogramId;
 
     public TextField txtcontactNumber;
     public TextField txtAddress;
     public TextField txtEmail;
 
-    public TextField txtDuration;
-    public TextField txtprogramFee;
     public JFXButton btnAdd;
-    public JFXButton btnClear;
     public Label lblsId;
-
-    public TextField txtprogramName;
+    public JFXButton btnUpdate;
+    public TableView<StudentTM> tblStudent;
+    public TableColumn colsId;
+    public TableColumn colgender;
+    public TableColumn colContavtNumber;
+    public TableColumn colAddress;
+    public JFXButton btnDelete;
+    public TableColumn colName;
+    public TableColumn colDOB;
+    public ComboBox <String> cmbgender;
+    public TableColumn colemail;
 
 
     StudentDetailsBOImpl studentDetailsBO = (StudentDetailsBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENT);
@@ -49,16 +60,17 @@ public class StudentDetailsFormController {
 
 
     public void initialize() throws SQLException {
-        try {
+       /* try {
             initializeCmbBox();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         genarateNewId();
         loadDateAndTime();
         gender();
+        showStudentOnTable();
 
-        cmbprogramId.getSelectionModel().selectedItemProperty().
+     /*   cmbprogramId.getSelectionModel().selectedItemProperty().
                 addListener((observable, oldValue, newValue) -> {
                     try {
                         setProgramData(newValue);
@@ -67,11 +79,11 @@ public class StudentDetailsFormController {
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-                });
+                });*/
 
     }
 
-    private void setProgramData(String newValue) throws SQLException, ClassNotFoundException {
+ /*   private void setProgramData(String newValue) throws SQLException, ClassNotFoundException {
         try {
             program temProgram = programBO.getProgram(newValue);
             txtprogramName.setText(temProgram.getProgramName());
@@ -80,12 +92,12 @@ public class StudentDetailsFormController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    private void initializeCmbBox() throws Exception {
+  /*  private void initializeCmbBox() throws Exception {
         ArrayList<String> allProgramName = studentDetailsBO.getAllProgramIde();
         cmbprogramId.setItems(FXCollections.observableArrayList(allProgramName));
-    }
+    }*/
 
     private void loadDateAndTime() {
 
@@ -110,7 +122,7 @@ public class StudentDetailsFormController {
                 lblsId.getText(),
                 studentName.getText(),
                 txtage.getText(),
-                gender.getValue(),
+                cmbgender.getValue(),
                 txtcontactNumber.getText(),
                 txtAddress.getText(),
                 txtEmail.getText()
@@ -118,10 +130,12 @@ public class StudentDetailsFormController {
         );
         if (studentDetailsBO.add(studentDTO)){
             new Alert(Alert.AlertType.CONFIRMATION,"Programme Added").show();
+            showStudentOnTable();
             genarateNewId();
         }else {
             new Alert(Alert.AlertType.WARNING,"Try Again").show();
         }
+
     }
 
     private void genarateNewId() {
@@ -132,7 +146,7 @@ public class StudentDetailsFormController {
         }
     }
 
-    public void clear_On_Action(ActionEvent actionEvent) {
+    public void clearField() {
         studentName.clear();
         txtage.clear();
         txtcontactNumber.clear();
@@ -142,10 +156,67 @@ public class StudentDetailsFormController {
     }
 
     private void gender() {
-        gender.getItems().addAll("Male", "Female");
-        gender.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+        cmbgender.getItems().addAll("Male", "Female");
+        cmbgender.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
         }));
     }
 
 
+    public void update_On_Action(ActionEvent actionEvent) {
+        StudentDTO studentDTO = new StudentDTO(
+                lblsId.getText(),
+                studentName.getText(),
+                txtage.getText(),
+                cmbgender.getValue(),
+                txtcontactNumber.getText(),
+                txtAddress.getText(),
+                txtEmail.getText()
+
+        );
+        if (studentDetailsBO.update(studentDTO)){
+            new Alert(Alert.AlertType.CONFIRMATION, "Updated ......").show();
+            showStudentOnTable();
+            clearField();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Try Again ......").show();
+        }
+    }
+
+    private void showStudentOnTable() {
+        ObservableList<StudentTM> list = studentDetailsBO.find();
+
+        colsId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        colDOB.setCellValueFactory(new PropertyValueFactory<>("age"));
+        colgender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        colContavtNumber.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colemail.setCellValueFactory(new PropertyValueFactory<>("eMail"));
+
+        tblStudent.setItems(list);
+    }
+
+    public void delete_On_Action(ActionEvent actionEvent) {
+        StudentTM student = tblStudent.getSelectionModel().getSelectedItem();
+        String id = student.getStudentId();
+        if (studentDetailsBO.delete(id)) {
+            new Alert(Alert.AlertType.INFORMATION, "Delete Complete ....").show();
+            showStudentOnTable();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Try Again .....").show();
+        }
+        clearField();
+    }
+
+    public void table_Click_OnAction(MouseEvent mouseEvent) {
+        StudentTM student = null;
+        student = tblStudent.getSelectionModel().getSelectedItem();
+        lblsId.setText(student.getStudentId());
+        studentName.setText(student.getStudentName());
+        txtage.setText(student.getAge());
+        txtcontactNumber.setText(student.getContactNumber());
+        txtAddress.setText(student.getAddress());
+        txtEmail.setText(student.geteMail());
+
+    }
 }

@@ -13,19 +13,6 @@ public class MainFormController {
     public AnchorPane mainFormContext;
     public AnchorPane PanelRoot;
 
-
-    public void btnRegistration_On_Action(ActionEvent actionEvent) {
-        try {
-            AnchorPane pane;
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/StudentRegistrationForm.fxml"));
-            pane = fxmlLoader.load();
-            PanelRoot.getChildren().setAll(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     public void program_On_Action(ActionEvent actionEvent) {
         try {
             AnchorPane pane;
@@ -48,7 +35,7 @@ public class MainFormController {
     public void RegistrationDetails_On_Action(ActionEvent actionEvent) {
         try {
             AnchorPane pane;
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/RegistrationDetailsForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/RegistrationForm.fxml"));
             pane = fxmlLoader.load();
             PanelRoot.getChildren().setAll(pane);
         } catch (IOException e) {
@@ -57,4 +44,14 @@ public class MainFormController {
     }
 
 
+    public void btnStudentDetails_On_Action(ActionEvent actionEvent) {
+        try {
+            AnchorPane pane;
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../views/StudentDetailForm.fxml"));
+            pane = fxmlLoader.load();
+            PanelRoot.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

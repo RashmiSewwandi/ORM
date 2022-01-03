@@ -4,11 +4,13 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="503.0" prefWidth="976.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentDetailsFormController">
+<AnchorPane prefHeight="535.0" prefWidth="976.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentDetailFormController">
    <children>
       <Label layoutX="19.0" layoutY="23.0" prefHeight="40.0" prefWidth="134.0" text="Student ID :">
          <font>
@@ -46,7 +48,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="gender" layoutX="607.0" layoutY="104.0" prefHeight="40.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmbgender" layoutX="607.0" layoutY="104.0" prefHeight="40.0" prefWidth="150.0" />
       <TextField fx:id="txtcontactNumber" layoutX="22.0" layoutY="205.0" prefHeight="40.0" prefWidth="201.0" />
       <Label layoutX="23.0" layoutY="180.0" prefHeight="26.0" prefWidth="142.0" text="Contact Number">
          <font>
@@ -65,37 +67,13 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Separator layoutX="13.0" layoutY="274.0" prefHeight="16.0" prefWidth="947.0" />
-      <Label layoutX="19.0" layoutY="332.0" prefHeight="26.0" prefWidth="134.0" text="Program ID">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="cmbprogramId" layoutX="19.0" layoutY="359.0" prefHeight="40.0" prefWidth="150.0" />
-      <TextField fx:id="txtprogramName" layoutX="214.0" layoutY="359.0" prefHeight="40.0" prefWidth="201.0" />
-      <TextField fx:id="txtDuration" layoutX="457.0" layoutY="358.0" prefHeight="40.0" prefWidth="201.0" />
-      <TextField fx:id="txtprogramFee" layoutX="696.0" layoutY="358.0" prefHeight="40.0" prefWidth="201.0" />
-      <Label layoutX="213.0" layoutY="332.0" prefHeight="26.0" prefWidth="118.0" text="Program Name">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="457.0" layoutY="334.0" prefHeight="26.0" prefWidth="118.0" text="Duration">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="696.0" layoutY="329.0" prefHeight="34.0" prefWidth="118.0" text="Program Fee">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <JFXButton fx:id="btnAdd" layoutX="620.0" layoutY="438.0" onAction="#add_On_Action" prefHeight="34.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #34e7e4;" text="Add">
+      <Separator layoutX="25.0" layoutY="287.0" prefHeight="16.0" prefWidth="478.0" />
+      <JFXButton fx:id="btnAdd" layoutX="551.0" layoutY="280.0" onAction="#add_On_Action" prefHeight="26.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #34e7e4;" text="Add">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnClear" layoutX="786.0" layoutY="438.0" onAction="#clear_On_Action" prefHeight="34.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: #808e9b;" text="Clear">
+      <JFXButton fx:id="btnUpdate" layoutX="693.0" layoutY="280.0" onAction="#update_On_Action" prefHeight="16.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: yellow;" text="Update">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -105,5 +83,21 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
+      <TableView fx:id="tblStudent" layoutX="16.0" layoutY="332.0" onMouseClicked="#table_Click_OnAction" prefHeight="178.0" prefWidth="951.0">
+        <columns>
+          <TableColumn fx:id="colsId" prefWidth="92.0" text="Student ID" />
+          <TableColumn fx:id="colName" minWidth="5.0" prefWidth="181.0" text="Student Name" />
+            <TableColumn fx:id="colDOB" minWidth="5.0" prefWidth="112.0" text="DOB" />
+            <TableColumn fx:id="colgender" minWidth="5.0" prefWidth="96.0" text="Gender" />
+            <TableColumn fx:id="colContavtNumber" minWidth="5.0" prefWidth="138.0" text="Contact Number" />
+            <TableColumn fx:id="colAddress" minWidth="5.0" prefWidth="157.0" text="Address" />
+            <TableColumn fx:id="colemail" prefWidth="174.0" text="E-Mail" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnDelete" layoutX="836.0" layoutY="280.0" onAction="#delete_On_Action" prefHeight="16.0" prefWidth="125.0" style="-fx-background-radius: 20; -fx-background-color: red;" text="Delete" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

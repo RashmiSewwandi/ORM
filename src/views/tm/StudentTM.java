@@ -1,15 +1,6 @@
-package entity;
+package views.tm;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity (name="student")
-public class student implements SuperEntity {
-    @Id
+public class StudentTM {
     private String studentId;
     private String studentName;
     private String age;
@@ -18,14 +9,10 @@ public class student implements SuperEntity {
     private String address;
     private String eMail;
 
-
-    @ManyToMany
-    private List<program> programList = new ArrayList();
-
-    public student() {
+    public StudentTM() {
     }
 
-    public student(String studentId, String studentName, String age, String gender, String contactNumber, String address, String eMail) {
+    public StudentTM(String studentId, String studentName, String age, String gender, String contactNumber, String address, String eMail) {
         this.setStudentId(studentId);
         this.setStudentName(studentName);
         this.setAge(age);
@@ -33,9 +20,7 @@ public class student implements SuperEntity {
         this.setContactNumber(contactNumber);
         this.setAddress(address);
         this.seteMail(eMail);
-
     }
-
 
     public String getStudentId() {
         return studentId;
@@ -95,7 +80,7 @@ public class student implements SuperEntity {
 
     @Override
     public String toString() {
-        return "student{" +
+        return "StudentTM{" +
                 "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
                 ", age='" + age + '\'' +

@@ -2,9 +2,9 @@ package dao.custom;
 
 
 import dao.SuperDAO;
-import entity.student;
+import entity.Student;
 
-public interface StudentDAO extends SuperDAO<student,String> {
+public interface StudentDAO extends SuperDAO<Student,String> {
 
     String getsId()throws Exception;
 

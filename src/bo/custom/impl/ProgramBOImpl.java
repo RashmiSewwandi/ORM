@@ -60,7 +60,7 @@ public class ProgramBOImpl implements ProgramBO {
         ));
     }
 
-    @Override
+
     public ObservableList<ProgramTM> search(String value) {
         List<program> list = programDAO.searchPrograms(value);
         ObservableList<ProgramTM> dtoArrayList = FXCollections.observableArrayList();
@@ -81,4 +81,7 @@ public class ProgramBOImpl implements ProgramBO {
 
 
 
+    public String getpId() throws Exception {
+        return programDAO.getpId();
+    }
 }
