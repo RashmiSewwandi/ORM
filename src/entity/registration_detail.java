@@ -2,16 +2,14 @@ package entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class registration_detail implements SuperEntity{
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     @ManyToOne
     @JoinColumn(name = "student",referencedColumnName = "studentId")
     private Student student;
@@ -24,18 +22,23 @@ public class registration_detail implements SuperEntity{
     public registration_detail() {
     }
 
-    public registration_detail(String id, Student student, entity.program program, Date registrationDate) {
+    public registration_detail(Student student, entity.program program) {
+        this.student = student;
+        this.program = program;
+    }
+
+    public registration_detail(Integer id, Student student, entity.program program, Date registrationDate) {
         this.setId(id);
         this.setStudent(student);
         this.setProgram(program);
         this.setRegistrationDate(registrationDate);
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -19,6 +19,10 @@ public class program implements SuperEntity {
     public program() {
     }
 
+    public program(String programId) {
+        this.programId = programId;
+    }
+
     public program(String programId, String programName, String duration, double programFee) {
         this.setProgramId(programId);
         this.setProgramName(programName);

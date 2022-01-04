@@ -22,6 +22,10 @@ public class Student implements SuperEntity {
     public Student() {
     }
 
+    public Student(String studentId) {
+        this.studentId = studentId;
+    }
+
     public Student(String studentId, String studentName, String age, String gender, String contactNumber, String address, String eMail) {
         this.setStudentId(studentId);
         this.setStudentName(studentName);

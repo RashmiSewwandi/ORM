@@ -2,10 +2,15 @@ package controller;
 
 import bo.BOFactory;
 import bo.custom.ProgramBO;
+import bo.custom.RegistrationBO;
 import bo.custom.StudentDetailsBO;
 import bo.custom.impl.ProgramBOImpl;
+import bo.custom.impl.RegistrationBOImpl;
 import bo.custom.impl.StudentDetailsBOImpl;
 import com.jfoenix.controls.JFXButton;
+import dto.CustomDTO;
+import dto.ProgramDTO;
+import dto.RegistrationDTO;
 import entity.Student;
 import entity.program;
 import javafx.collections.FXCollections;
@@ -13,7 +18,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.FactoryConfiguration;
 import views.tm.RegistrationTM;
+import views.tm.StudentTM;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -45,11 +54,16 @@ public class RegistrationFormController {
 
     StudentDetailsBO studentDetailsBO = (StudentDetailsBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENT);
     ProgramBO programBO = (ProgramBOImpl) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.PROGRAM);
+    RegistrationBO registrationBO = (RegistrationBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.REGISTRATION_DETAIL);
 
 
     public void initialize() {
 
-
+        try {
+            loadTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         showRegistrationOnTable();
@@ -121,7 +135,6 @@ public class RegistrationFormController {
 
     private void showRegistrationOnTable() {
 
-
         colsId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colstudentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         colprogramId.setCellValueFactory(new PropertyValueFactory<>("programId"));
@@ -129,10 +142,34 @@ public class RegistrationFormController {
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("registrationDate"));
 
-
     }
 
     public void add_On_Action(ActionEvent actionEvent) {
+        RegistrationDTO registrationDTO = new RegistrationDTO(cmbsId.getSelectionModel().getSelectedItem().toString(),
+                cmbpId.getSelectionModel().getSelectedItem().toString());
+        System.out.println(registrationBO);
+        if (registrationBO.saveReg(registrationDTO)) {
+            new Alert(Alert.AlertType.CONFIRMATION,"Save ....",ButtonType.OK).show();
+            try {
+                loadTable();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Error ....",ButtonType.OK).show();
+
+        }
+
+    }
+
+    private void loadTable() throws Exception {
+        ArrayList<CustomDTO> customDTOS = registrationBO.get_all_student();
+        ObservableList<RegistrationTM> customTMObservableList = FXCollections.observableArrayList();
+        for (CustomDTO customDTO : customDTOS) {
+            customTMObservableList.add(new RegistrationTM(customDTO.getStudent_id(), customDTO.getStudent_name(), customDTO.getProgram_id(),
+                    customDTO.getProgram_name(), customDTO.getDuration(), customDTO.getJoined_date()));
+            tblRegistration.setItems(customTMObservableList);
+        }
     }
 
     public void delete_On_Action(ActionEvent actionEvent) {
@@ -140,7 +177,6 @@ public class RegistrationFormController {
 
 
     private void loadDate() {
-
         Date date = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         lblDate.setText(f.format(date));

@@ -1,17 +1,19 @@
 package views.tm;
 
+import java.util.Date;
+
 public class RegistrationTM {
     private String studentId;
     private String studentName;
     private String programId;
     private String programName;
     private String duration;
-    private String registrationDate;
+    private Date registrationDate;
 
     public RegistrationTM() {
     }
 
-    public RegistrationTM(String studentId, String studentName, String programId, String programName, String duration, String registrationDate) {
+    public RegistrationTM(String studentId, String studentName, String programId, String programName, String duration, Date registrationDate) {
         this.setStudentId(studentId);
         this.setStudentName(studentName);
         this.setProgramId(programId);
@@ -60,11 +62,11 @@ public class RegistrationTM {
         this.duration = duration;
     }
 
-    public String getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(String registrationDate) {
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 
